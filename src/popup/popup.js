@@ -154,7 +154,7 @@ function windowRow(win) {
       'aria-valuemax': '100',
       'aria-valuenow': String(Math.round(Math.min(value, 100))),
       'aria-label': label,
-      style: `--fill: ${Math.min(value, 100)}%`
+      style: `--fill: ${Math.min(value, 100) / 100}`
     }, el('i'))
   );
 }
