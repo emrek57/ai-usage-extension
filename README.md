@@ -23,7 +23,7 @@ You only need to be signed in to the service in the same Chrome profile. Service
 - One popup for every service, with reset countdowns
 - Optional on-screen bar that floats over every page, including fullscreen
 - Highest usage shown as a badge on the toolbar icon
-- Background refresh every 5, 15, 30 or 60 minutes
+- Background refresh every 30 seconds up to every hour
 - Turn individual services on or off
 - Light and dark themes that follow your system
 - English and Turkish interface

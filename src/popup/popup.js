@@ -166,9 +166,13 @@ function renderSettings() {
   $('#badge-toggle').replaceChildren(
     toggle(t('badgeLabel'), settings.badge, on => writeSettings({ badge: on }))
   );
-  segments('#intervals', INTERVALS.map(minutes => [minutes, `${minutes}${t('unitMinute')}`]), settings.interval,
+  segments('#intervals', INTERVALS.map(minutes => [minutes, intervalLabel(minutes)]), settings.interval,
     minutes => writeSettings({ interval: minutes }));
   renderOverlaySettings();
+}
+
+function intervalLabel(minutes) {
+  return minutes < 1 ? `${minutes * 60}${t('unitSecond')}` : `${minutes}${t('unitMinute')}`;
 }
 
 function renderOverlaySettings() {

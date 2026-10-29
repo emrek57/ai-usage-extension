@@ -33,6 +33,7 @@
   "justNow": { "message": "just now" },
   "unitDay": { "message": "d" },
   "unitHour": { "message": "h" },
+  "unitSecond": { "message": "s" },
   "unitMinute": { "message": "m" },
   "loading": { "message": "Loading…" },
   "waiting": { "message": "Waiting for first refresh" },

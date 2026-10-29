@@ -1,6 +1,6 @@
 import { providers } from '../providers/index.js';
 
-export const INTERVALS = [5, 15, 30, 60];
+export const INTERVALS = [0.5, 1, 5, 15, 30, 60];
 
 export const OVERLAY_ORIGINS = ['<all_urls>'];
 

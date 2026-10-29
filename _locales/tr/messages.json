@@ -33,6 +33,7 @@
   "justNow": { "message": "az önce" },
   "unitDay": { "message": "g" },
   "unitHour": { "message": "sa" },
+  "unitSecond": { "message": "sn" },
   "unitMinute": { "message": "dk" },
   "loading": { "message": "Yükleniyor…" },
   "waiting": { "message": "İlk yenileme bekleniyor" },
