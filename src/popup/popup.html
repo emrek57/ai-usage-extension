@@ -36,6 +36,36 @@
       <div id="badge-toggle"></div>
     </div>
     <div class="group">
+      <h2 data-i18n="overlayHeading"></h2>
+      <div id="overlay-toggle"></div>
+      <div class="overlay-options" id="overlay-options" hidden>
+        <h3 data-i18n="overlayMetrics"></h3>
+        <div id="overlay-metrics"></div>
+        <div class="field">
+          <span data-i18n="overlayStyle"></span>
+          <div class="segments" id="overlay-style" role="radiogroup"></div>
+        </div>
+        <div class="field">
+          <span data-i18n="overlayLayout"></span>
+          <div class="segments" id="overlay-layout" role="radiogroup"></div>
+        </div>
+        <label class="field slider">
+          <span data-i18n="overlaySize"></span>
+          <output id="overlay-scale-value"></output>
+          <input type="range" id="overlay-scale" min="70" max="200" step="5">
+        </label>
+        <label class="field slider">
+          <span data-i18n="overlayOpacity"></span>
+          <output id="overlay-opacity-value"></output>
+          <input type="range" id="overlay-opacity" min="20" max="100" step="5">
+        </label>
+        <div class="field inline">
+          <p class="hint" data-i18n="overlayHint"></p>
+          <button class="link" id="overlay-reset" type="button" data-i18n="overlayReset"></button>
+        </div>
+      </div>
+    </div>
+    <div class="group">
       <h2 data-i18n="intervalHeading"></h2>
       <div class="segments" id="intervals" role="radiogroup"></div>
     </div>

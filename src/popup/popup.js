@@ -1,5 +1,5 @@
 import { providers } from '../providers/index.js';
-import { INTERVALS, readSettings, writeSettings } from '../lib/settings.js';
+import { INTERVALS, OVERLAY_ORIGINS, readSettings, writeSettings } from '../lib/settings.js';
 
 const STALE_AFTER = 60_000;
 const LOADING_TIMEOUT = 60_000;
@@ -22,6 +22,7 @@ chrome.storage.onChanged.addListener(async (changes, area) => {
   if (area === 'local') {
     for (const [key, { newValue }] of Object.entries(changes)) state[key] = newValue;
     render();
+    if (changes.results) renderOverlaySettings();
   }
   if (area === 'sync' && changes.settings) {
     settings = await readSettings();
@@ -47,6 +48,14 @@ function bind() {
     $('#list').hidden = open;
     $('#toggle').setAttribute('aria-pressed', String(open));
   });
+  for (const [id, key] of [['#overlay-scale', 'scale'], ['#overlay-opacity', 'opacity']]) {
+    const input = $(id);
+    input.addEventListener('input', () => {
+      $(`${id}-value`).textContent = `${input.value}%`;
+    });
+    input.addEventListener('change', () => writeSettings({ overlay: { [key]: Number(input.value) / 100 } }));
+  }
+  $('#overlay-reset').addEventListener('click', () => chrome.storage.local.remove('overlayPosition'));
   $('#source').addEventListener('click', event => {
     event.preventDefault();
     openTab(event.currentTarget.href);
@@ -157,14 +166,68 @@ function renderSettings() {
   $('#badge-toggle').replaceChildren(
     toggle(t('badgeLabel'), settings.badge, on => writeSettings({ badge: on }))
   );
-  $('#intervals').replaceChildren(...INTERVALS.map(minutes =>
+  segments('#intervals', INTERVALS.map(minutes => [minutes, `${minutes}${t('unitMinute')}`]), settings.interval,
+    minutes => writeSettings({ interval: minutes }));
+  renderOverlaySettings();
+}
+
+function renderOverlaySettings() {
+  const overlay = settings.overlay;
+  $('#overlay-toggle').replaceChildren(toggle(t('overlayEnable'), overlay.enabled, enableOverlay));
+  $('#overlay-options').hidden = !overlay.enabled;
+
+  const metrics = availableMetrics();
+  $('#overlay-metrics').replaceChildren(...(metrics.length
+    ? metrics.map(metric => toggle(metric.title, !overlay.hidden.includes(metric.key), on => writeSettings({
+      overlay: { hidden: on ? overlay.hidden.filter(key => key !== metric.key) : [...overlay.hidden, metric.key] }
+    })))
+    : [el('p', { class: 'hint' }, t('overlayNoMetrics'))]));
+
+  segments('#overlay-style', [['solid', t('styleSolid')], ['transparent', t('styleTransparent')]], overlay.style,
+    style => writeSettings({ overlay: { style } }));
+  segments('#overlay-layout', [['row', t('layoutRow')], ['column', t('layoutColumn')]], overlay.layout,
+    layout => writeSettings({ overlay: { layout } }));
+
+  slider('#overlay-scale', overlay.scale);
+  slider('#overlay-opacity', overlay.opacity);
+}
+
+function availableMetrics() {
+  const results = state.results ?? {};
+  return providers
+    .filter(p => settings.enabled[p.id] && results[p.id]?.status === 'ok')
+    .flatMap(p => results[p.id].windows.map(win => ({
+      key: `${p.id}.${win.label}`,
+      title: `${p.name} · ${win.span ? t(win.label, duration(win.span)) : t(win.label)}`
+    })));
+}
+
+function enableOverlay(on) {
+  if (!on) {
+    writeSettings({ overlay: { enabled: false } });
+    return;
+  }
+  chrome.permissions.request({ origins: OVERLAY_ORIGINS }).then(granted => {
+    if (granted) writeSettings({ overlay: { enabled: true } });
+  });
+}
+
+function segments(selector, choices, current, choose) {
+  $(selector).replaceChildren(...choices.map(([value, label]) =>
     el('button', {
       type: 'button',
       role: 'radio',
-      'aria-checked': String(settings.interval === minutes),
-      onclick: () => writeSettings({ interval: minutes })
-    }, `${minutes}${t('unitMinute')}`)
+      'aria-checked': String(current === value),
+      onclick: () => choose(value)
+    }, label)
   ));
+}
+
+function slider(selector, ratio) {
+  const input = $(selector);
+  if (document.activeElement === input) return;
+  input.value = String(Math.round(ratio * 100));
+  $(`${selector}-value`).textContent = `${input.value}%`;
 }
 
 function toggle(label, on, change) {

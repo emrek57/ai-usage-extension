@@ -41,6 +41,11 @@ body {
   margin: 0;
 }
 
+html {
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
 body {
   width: 340px;
   min-height: 120px;
@@ -421,7 +426,8 @@ svg {
 
 .segments {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
   margin-top: 6px;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -446,6 +452,94 @@ svg {
 .segments button[aria-checked="true"] {
   background: var(--ink);
   color: var(--bg);
+}
+
+.overlay-options {
+  margin-top: 4px;
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
+}
+
+.overlay-options h3 {
+  margin: 8px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.field {
+  display: block;
+  margin-top: 12px;
+}
+
+.field > span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  row-gap: 6px;
+}
+
+.slider output {
+  font: 11px var(--mono);
+  color: var(--ink);
+}
+
+.slider input {
+  grid-column: 1 / -1;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 18px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--line);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 10px;
+  height: 16px;
+  margin-top: -7px;
+  border-radius: 3px;
+  background: var(--ink);
+  appearance: none;
+}
+
+input[type="range"]:focus-visible {
+  outline: 1.5px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hint {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.inline .hint {
+  margin: 0;
+}
+
+.inline .link {
+  flex: none;
 }
 
 .note {
