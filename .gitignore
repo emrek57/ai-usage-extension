@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+*.zip
+*.crx
+*.pem
+.playwright-mcp/
+.vscode/
+node_modules/

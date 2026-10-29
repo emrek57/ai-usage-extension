@@ -1,0 +1,51 @@
+{
+  "extName": { "message": "AI Usage" },
+  "extDescription": { "message": "Claude, Codex ve Cursor kullanım limitlerinin ne kadarını kullandığını araç çubuğundan gör." },
+  "title": { "message": "Kullanım" },
+  "refresh": { "message": "Yenile" },
+  "settings": { "message": "Ayarlar" },
+  "openSite": {
+    "message": "$SITE$ sitesini aç",
+    "placeholders": { "site": { "content": "$1" } }
+  },
+  "session": {
+    "message": "Oturum · $SPAN$",
+    "placeholders": { "span": { "content": "$1" } }
+  },
+  "window": {
+    "message": "Pencere · $SPAN$",
+    "placeholders": { "span": { "content": "$1" } }
+  },
+  "weekly": { "message": "Haftalık" },
+  "weeklyOpus": { "message": "Haftalık · Opus" },
+  "weeklySonnet": { "message": "Haftalık · Sonnet" },
+  "monthly": { "message": "Fatura dönemi" },
+  "onDemand": { "message": "Ek kullanım" },
+  "resetsIn": {
+    "message": "$TIME$ sonra sıfırlanır",
+    "placeholders": { "time": { "content": "$1" } }
+  },
+  "resetsNow": { "message": "şimdi sıfırlanıyor" },
+  "updatedAgo": {
+    "message": "$TIME$ önce",
+    "placeholders": { "time": { "content": "$1" } }
+  },
+  "justNow": { "message": "az önce" },
+  "unitDay": { "message": "g" },
+  "unitHour": { "message": "sa" },
+  "unitMinute": { "message": "dk" },
+  "loading": { "message": "Yükleniyor…" },
+  "waiting": { "message": "İlk yenileme bekleniyor" },
+  "signedOut": { "message": "Oturum açılmamış" },
+  "signIn": { "message": "Giriş yap" },
+  "loadFailed": { "message": "Kullanım bilgisi alınamadı" },
+  "stale": { "message": "Son bilinen değerler gösteriliyor" },
+  "noLimits": { "message": "Bu hesap için limit bilgisi yok." },
+  "nothingEnabled": { "message": "Tüm servisler kapalı. Ayarlardan birini aç." },
+  "servicesHeading": { "message": "Servisler" },
+  "toolbarHeading": { "message": "Araç çubuğu" },
+  "badgeLabel": { "message": "En yüksek kullanımı simgede göster" },
+  "intervalHeading": { "message": "Yenileme sıklığı" },
+  "privacyNote": { "message": "İstekler mevcut oturumunla tarayıcından doğrudan ilgili servise gider. Başka hiçbir yere veri gönderilmez." },
+  "source": { "message": "GitHub'da kaynak kod" }
+}

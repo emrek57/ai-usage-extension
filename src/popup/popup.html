@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Usage</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-name" data-i18n="title"></span>
+    </div>
+    <div class="tools">
+      <span class="stamp" id="stamp"></span>
+      <button class="icon" id="refresh" type="button" data-i18n-title="refresh">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5v3h-3"/></svg>
+      </button>
+      <button class="icon" id="toggle" type="button" data-i18n-title="settings" aria-pressed="false">
+        <svg class="when-closed" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4.5h7M12.5 4.5h1M2.5 11.5h1M6.5 11.5h7"/><circle cx="11" cy="4.5" r="1.5"/><circle cx="5" cy="11.5" r="1.5"/></svg>
+        <svg class="when-open" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="list" aria-live="polite"></main>
+
+  <section id="settings" class="settings" hidden>
+    <div class="group">
+      <h2 data-i18n="servicesHeading"></h2>
+      <div id="service-toggles"></div>
+    </div>
+    <div class="group">
+      <h2 data-i18n="toolbarHeading"></h2>
+      <div id="badge-toggle"></div>
+    </div>
+    <div class="group">
+      <h2 data-i18n="intervalHeading"></h2>
+      <div class="segments" id="intervals" role="radiogroup"></div>
+    </div>
+    <p class="note" data-i18n="privacyNote"></p>
+    <a class="source" id="source" href="https://github.com/emrek57/ai-usage-extension" data-i18n="source"></a>
+  </section>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

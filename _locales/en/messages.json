@@ -1,0 +1,51 @@
+{
+  "extName": { "message": "AI Usage" },
+  "extDescription": { "message": "See how much of your Claude, Codex and Cursor limits you have used, right from the toolbar." },
+  "title": { "message": "Usage" },
+  "refresh": { "message": "Refresh" },
+  "settings": { "message": "Settings" },
+  "openSite": {
+    "message": "Open $SITE$",
+    "placeholders": { "site": { "content": "$1" } }
+  },
+  "session": {
+    "message": "Session · $SPAN$",
+    "placeholders": { "span": { "content": "$1" } }
+  },
+  "window": {
+    "message": "Window · $SPAN$",
+    "placeholders": { "span": { "content": "$1" } }
+  },
+  "weekly": { "message": "Weekly" },
+  "weeklyOpus": { "message": "Weekly · Opus" },
+  "weeklySonnet": { "message": "Weekly · Sonnet" },
+  "monthly": { "message": "Billing cycle" },
+  "onDemand": { "message": "On-demand" },
+  "resetsIn": {
+    "message": "resets in $TIME$",
+    "placeholders": { "time": { "content": "$1" } }
+  },
+  "resetsNow": { "message": "resetting now" },
+  "updatedAgo": {
+    "message": "$TIME$ ago",
+    "placeholders": { "time": { "content": "$1" } }
+  },
+  "justNow": { "message": "just now" },
+  "unitDay": { "message": "d" },
+  "unitHour": { "message": "h" },
+  "unitMinute": { "message": "m" },
+  "loading": { "message": "Loading…" },
+  "waiting": { "message": "Waiting for first refresh" },
+  "signedOut": { "message": "Not signed in" },
+  "signIn": { "message": "Sign in" },
+  "loadFailed": { "message": "Couldn't load usage" },
+  "stale": { "message": "Showing last known values" },
+  "noLimits": { "message": "No limits reported for this account." },
+  "nothingEnabled": { "message": "Every service is turned off. Turn one on in settings." },
+  "servicesHeading": { "message": "Services" },
+  "toolbarHeading": { "message": "Toolbar" },
+  "badgeLabel": { "message": "Show highest usage on the icon" },
+  "intervalHeading": { "message": "Refresh every" },
+  "privacyNote": { "message": "Requests go straight from your browser to each service using your existing session. Nothing is sent anywhere else." },
+  "source": { "message": "Source on GitHub" }
+}
